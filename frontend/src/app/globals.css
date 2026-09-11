@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+:root {
+  --bg-field: #f7f9f4;
+  --bg-field-subtle: #edf3e7;
+  --agri-dark: #042f24;
+  --agri-forest: #064e3b;
+  --agri-emerald: #065f46;
+  --agri-leaf: #10b981;
+  --agri-gold: #f59e0b;
+  --agri-amber: #d97706;
+  --agri-cream: #fefce8;
+}
+
+body {
+  background-color: var(--bg-field);
+  background-image: 
+    radial-gradient(circle at 15% 10%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+    radial-gradient(circle at 85% 25%, rgba(245, 158, 11, 0.07) 0%, transparent 45%),
+    radial-gradient(circle at 50% 80%, rgba(6, 78, 59, 0.06) 0%, transparent 50%);
+  background-attachment: fixed;
+  color: #1a2e22;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  min-height: 100vh;
+}
+
+/* AI Crop Vision Laser Scanning Beam */
+@keyframes laserScan {
+  0% {
+    top: 0%;
+    opacity: 0.8;
+  }
+  50% {
+    top: 96%;
+    opacity: 1;
+  }
+  100% {
+    top: 0%;
+    opacity: 0.8;
+  }
+}
+
+.animate-laser-scan {
+  animation: laserScan 2.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Subtle firefly floating animation */
+@keyframes fireflyFloat {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) scale(1);
+    opacity: 0.4;
+  }
+  33% {
+    transform: translateY(-8px) translateX(5px) scale(1.15);
+    opacity: 0.85;
+  }
+  66% {
+    transform: translateY(-4px) translateX(-6px) scale(0.9);
+    opacity: 0.5;
+  }
+}
+
+.animate-firefly-1 {
+  animation: fireflyFloat 5s ease-in-out infinite;
+}
+
+.animate-firefly-2 {
+  animation: fireflyFloat 6.5s ease-in-out 1.2s infinite;
+}
+
+.animate-firefly-3 {
+  animation: fireflyFloat 7.2s ease-in-out 2.5s infinite;
+}
+
+/* Gentle leaf sway */
+@keyframes gentleSway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+.animate-leaf-sway {
+  animation: gentleSway 4s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+/* Connecting path pulse */
+@keyframes pathPulse {
+  0%, 100% {
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dashoffset: 14;
+  }
+}
+
+.animate-path-flow {
+  stroke-dasharray: 6, 6;
+  animation: pathPulse 3s linear infinite;
+}
+
+/* Respect user preferences for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-laser-scan,
+  .animate-firefly-1,
+  .animate-firefly-2,
+  .animate-firefly-3,
+  .animate-leaf-sway,
+  .animate-path-flow {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "crop-intelligence-sih",
+  "version": "1.0.0",
+  "description": "Smart India Hackathon: Early Detection and Management of Crop Diseases and Pest Infestations",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:backend": "cd backend && npm run dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "seed": "cd backend && npm run seed",
+    "test": "cd backend && npm test",
+    "install:all": "npm install && cd backend && npm install && cd ../frontend && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "crop-disease",
+    "pest-detection",
+    "sih2026",
+    "smart-agriculture",
+    "nextjs",
+    "express",
+    "mongodb"
+  ],
+  "author": "SIH Team",
+  "license": "MIT"
+}
