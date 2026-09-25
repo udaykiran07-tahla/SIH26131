@@ -4,6 +4,7 @@
   "description": "REST API for SIH Crop Disease & Pest Detection Prototype",
   "main": "src/server.js",
   "scripts": {
+    "build": "echo 'Backend ready'",
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "seed": "node src/seed/seed.js",

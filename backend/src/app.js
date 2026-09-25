@@ -14,6 +14,8 @@ const modelRoutes = require('./routes/modelRoutes');
 const dashboardRoutes = require('./routes/dashboardRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 
+const connectDB = require('./config/db');
+
 const app = express();
 
 // Middleware
@@ -28,8 +30,20 @@ if (process.env.NODE_ENV !== 'test') {
   app.use(morgan('dev'));
 }
 
-// Static directory for uploaded images
-const uploadsPath = path.join(__dirname, '../uploads');
+// Ensure database connection for incoming requests (vital for Vercel serverless)
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+  } catch (err) {
+    console.error('[DB Middleware]:', err.message);
+  }
+  next();
+});
+
+// Static directory for uploaded images (use os.tmpdir() on Vercel)
+const uploadsPath = process.env.VERCEL
+  ? path.join(require('os').tmpdir(), 'uploads')
+  : path.join(__dirname, '../uploads');
 app.use('/uploads', express.static(uploadsPath));
 
 // Health check endpoint
